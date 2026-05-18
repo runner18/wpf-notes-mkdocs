@@ -1,0 +1,19 @@
+mkdocs new [filepath goes here]             adds project-folder to filepath
+new docs . [empty filepath goes here]       adds project-contents to filepath
+
+mkdocs serve    create local server
+
+mkdocs serve -a [IP:PORT]
+mkdocs serve --watch-theme
+
+mkdocs build
+mkdocs build --clean
+mkdocs --strict
+mkdocs build --site-dir
+
+mkdocs gh-deploy        deploy to github, need to setup first
+
+mkdocs --help
+mkdocs [command] --help
+mkdocs --version
+
