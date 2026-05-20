@@ -34,4 +34,23 @@ Retrieved 2026-05-18, License - CC BY-SA 2.5
 
 ```
 
+### Creating a Dialog
+Following the MVVM approach, the ViewModel should have no knowledge of the View, and therefore should not be involved with creating a dialog. 
+
+There are a couple of approaches you can take:
+
+**Create a DialogService**  
+The ViewModel would use this service to create a new window, meaning the ViewModel does not create the window directly.  The window would change depending on the ViewModel type passed in.
+
+[This is a more simple example](https://stackoverflow.com/questions/25845689/opening-new-window-in-mvvm-wpf)  
+[This is a more complex example](https://stackoverflow.com/questions/3801681/good-or-bad-practice-for-dialogs-in-wpf-with-mvvm?noredirect=1&lq=1)
+
+
+**The Purist**  
+[The top response to this](https://stackoverflow.com/questions/1043918/open-file-dialog-mvvm?noredirect=1&lq=1)  argues dialogs are a UI thing, meaning only UI should call it even if from the code-behind.
+
+
+
+
+
 
