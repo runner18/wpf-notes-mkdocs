@@ -17,3 +17,5 @@ mkdocs --help
 mkdocs [command] --help
 mkdocs --version
 
+git add .
+git commit -m "commit message goes here"
