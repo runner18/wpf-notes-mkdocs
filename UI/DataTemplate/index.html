@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Mvvm intro - alexs-wpf-notes</title>
+        <title>DataTemplate - alexs-wpf-notes</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -38,15 +38,15 @@
                                 <a href="../.." class="nav-link">Welcome to MkDocs</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Mvvm intro</a>
+    <a href="../../Commands%20and%20Databinding/mvvm-intro/" class="dropdown-item">Mvvm intro</a>
 </li>
                                     
 <li>
-    <a href="../Services/" class="dropdown-item">Services</a>
+    <a href="../../Commands%20and%20Databinding/Services/" class="dropdown-item">Services</a>
 </li>
                                 </ul>
                             </li>
@@ -60,23 +60,23 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UI/DataTemplate/" class="dropdown-item">DataTemplate</a>
+    <a href="./" class="dropdown-item active" aria-current="page">DataTemplate</a>
 </li>
                                     
 <li>
-    <a href="../../UI/General/" class="dropdown-item">General</a>
+    <a href="../General/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Elements/" class="dropdown-item">UI Elements</a>
+    <a href="../UI%20Elements/" class="dropdown-item">UI Elements</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Resources/" class="dropdown-item">UI Resources</a>
+    <a href="../UI%20Resources/" class="dropdown-item">UI Resources</a>
 </li>
                                 </ul>
                             </li>
@@ -84,12 +84,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../../Solution%20and%20Architecture/solution_structure/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Services/" class="nav-link">
+                                <a rel="next" href="../General/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,12 +111,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#quick-explanation" class="nav-link">Quick Explanation</a>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#binding-properties" class="nav-link">Binding Properties</a>
+            <li class="nav-item" data-bs-level="2"><a href="#chatbot-answer" class="nav-link">Chatbot Answer</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -125,40 +125,106 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="quick-explanation">Quick Explanation</h2>
-<p>MVVM is a design practice that stands form meant to keep things separate and organized:  </p>
-<ul>
-<li><strong>Model</strong> - just has properties, represents a "thing" (e.g. Car.cs)</li>
-<li><strong>View</strong> - the graphics (e.g. MainWindow.xaml)</li>
-<li><strong>ViewModel</strong> - the logic that controls a View (e.g. MainWindowViewModel.xaml)</li>
-</ul>
-<h3 id="note-about-code-behinds">Note about Code-Behinds</h3>
-<p>Each View (e.g. MainWindow.xaml) has a code-behind (MainWindow.xaml.cs). The code-behind is NOT the ViewModel. This is the "old" pre-MVVM way of controlling a View, avoid when possible if you care about MVVM.</p>
-<h2 id="binding-properties">Binding Properties</h2>
-<p>The ViewModel "controls" the View via use of binding, where the code is constantly checking the state of the "observable" properties in the ViewModel, and changing the View automatically as the ViewModel's properties change.</p>
-<h3 id="the-classic-way-inotifypropertychanged">The "Classic" Way (INotifyPropertyChanged)</h3>
-<pre><code class="language-CS">private bool _isStopLightOn;
-public bool isStopLightOn
+<h2 id="summary">Summary</h2>
+<p>DataTemplates let you change the look of UI depending on the data type.</p>
+<p>In a resource dictionary (global or local), add DataTemplate:</p>
+<pre><code class="language-xml">&lt;DataTemplate DataType=&quot;{x:Type scvm:NumericSettingControlViewModel}&quot;&gt;
+    &lt;sc:NumericSettingControl/&gt;
+&lt;/DataTemplate&gt;
+&lt;DataTemplate DataType=&quot;{x:Type scvm:StringSettingControlViewModel}&quot;&gt;
+    &lt;sc:StringSettingControl MinWidth=&quot;400&quot;/&gt;
+&lt;/DataTemplate&gt;
+</code></pre>
+<p>You can use a UI element such as "ContentControl".  </p>
+<p>If a ContentControl's source matches the DataType of a DataTemplate, the ContentControl will <em>transform</em> into the content of said matching DataTemplate.</p>
+<p>ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms accordingly.</p>
+<h2 id="chatbot-answer">Chatbot Answer</h2>
+<p>(Take this with a grain of salt it's from a chatbot)</p>
+<p>How to create a ViewModel that can handle multiple data types and read status:</p>
+<pre><code class="language-cs">public enum { PositionerReadWrite, PositionerReadOnly, PcOnly }
+public enum ValueDataType { Numeric, Boolean, Enum, String }
+
+public class ValueViewModel : INotifyPropertyChanged
 {
-    get =&gt; _isStopLightOn;
-    set
+    // Identification and configuration
+    public string Label { get; }
+    public ValueCategory Category { get; }
+    public ValueDataType DataType { get; }
+    public bool IsReadOnly { get; } // controls UI editablility
+    public IEnumerable&lt;string&gt; EnumOptions { get; } // only relevant when DataType == Enum
+
+    // The &quot;user-set&quot; value - shown to the user, editable if not read-only
+    [ObservableProperty]
+    public partial DisplayValue { get; set; }
+
+    // The &quot;source&quot; value from HART / DB, for revert or comparison
+    public object SourceValue { get; private set; }
+    public object IsModified { get; private set; }
+
+    // Methods to commit/revert
+    public void AcceptPending() { SourceValue = DisplayValue; IsModified = false; }
+    public void RejectPending() { DisplayValue = SourceValue; IsModified = false; }
+
+    // Logic to save to the right place(s) according to category
+    public async Task SaveAsync()
     {
-        if (_isStopLightOn != value)
+        if (!IsModified) return;
+        if(Category == ValueCategory.PcOnly || Category == ValueCategory.PositionerReadOnly || Category == ValueCategory.PositionerReadWrite)
         {
-            _isStopLightOn = value;
-            OnPropertyChanged();
+            // always write to database
+            await DatabaseService.WriteAsync(...);
         }
+        if(Category == ValueCategory.PositionerReadWrite)
+        {
+            // also write to embeddded device
+            await HartService.WriteAsync(...);
+        }
+        AcceptPending();
     }
 }
 </code></pre>
-<h3 id="community-toolkit">Community Toolkit</h3>
-<p>The "classic" way can now be more concise with Community Toolkit:</p>
-<pre><code class="language-CS">private IQuantity? _localValue;
-public IQuantity? LocalValue 
+<p>Implement DataTemplateSelector</p>
+<pre><code class="language-CS">public class ValueTemplateSelector : DataTemplateSelector
 {
-    get =&gt; _localValue;
-    set =&gt; SetProperty(ref _localValue, value);
+    public DataTemplate NumericReadWriteTemplate { get; set; }
+    public DataTemplate NumericReadOnlyTemplate { get; set; }
+    public DataTemplate BooleanTemplate { get; set; }
+    public DataTemplate EnumTemplate { get; set; }
+    public DataTemplate StringReadWriteTemplate { get; set; }
+    public DataTemplate StringReadOnlyTemplate { get; set; }
+
+    public override DataTemplate SelectTemplate(object item, DependencyObject container)
+    {
+        if (item is ValueViewModel vm)
+        {
+            if (vm.DataType == ValueDataType.Enum)
+                return EnumTemplate;
+            if (vm.DataType == ValueDataType.Boolean)
+                return BooleanTemplate;
+            // For numeric/string, factor in read‑only
+            if (vm.IsReadOnly)
+                return vm.DataType == ValueDataType.Numeric ? NumericReadOnlyTemplate : StringReadOnlyTemplate;
+            else
+                return vm.DataType == ValueDataType.Numeric ? NumericReadWriteTemplate : StringReadWriteTemplate;
+        }
+        return base.SelectTemplate(item, container);
+    }
 }
+</code></pre>
+<p>In the XAML:</p>
+<pre><code class="language-xml">&lt;ContentControl Content=&quot;{Binding MyValueViewModel}&quot;
+                ContentTemplateSelector=&quot;{StaticResource ValueTemplateSelector}&quot; /&gt;
+
+&lt;DataTemplate x:Key=&quot;NumericReadWriteTemplate&quot;&gt;
+    &lt;TextBox Text=&quot;{Binding DisplayValue, UpdateSourceTrigger=PropertyChanged}&quot;
+             IsEnabled=&quot;{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}&quot;/&gt;
+&lt;/DataTemplate&gt;
+
+&lt;DataTemplate x:Key=&quot;EnumTemplate&quot;&gt;
+    &lt;ComboBox ItemsSource=&quot;{Binding EnumOptions}&quot;
+              SelectedItem=&quot;{Binding DisplayValue}&quot;
+              IsEnabled=&quot;{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}&quot;/&gt;
+&lt;/DataTemplate&gt;
 </code></pre></div>
             </div>
         </div>

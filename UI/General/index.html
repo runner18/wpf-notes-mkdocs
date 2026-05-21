@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Mvvm intro - alexs-wpf-notes</title>
+        <title>General - alexs-wpf-notes</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -38,15 +38,15 @@
                                 <a href="../.." class="nav-link">Welcome to MkDocs</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Mvvm intro</a>
+    <a href="../../Commands%20and%20Databinding/mvvm-intro/" class="dropdown-item">Mvvm intro</a>
 </li>
                                     
 <li>
-    <a href="../Services/" class="dropdown-item">Services</a>
+    <a href="../../Commands%20and%20Databinding/Services/" class="dropdown-item">Services</a>
 </li>
                                 </ul>
                             </li>
@@ -60,23 +60,23 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UI/DataTemplate/" class="dropdown-item">DataTemplate</a>
+    <a href="../DataTemplate/" class="dropdown-item">DataTemplate</a>
 </li>
                                     
 <li>
-    <a href="../../UI/General/" class="dropdown-item">General</a>
+    <a href="./" class="dropdown-item active" aria-current="page">General</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Elements/" class="dropdown-item">UI Elements</a>
+    <a href="../UI%20Elements/" class="dropdown-item">UI Elements</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Resources/" class="dropdown-item">UI Resources</a>
+    <a href="../UI%20Resources/" class="dropdown-item">UI Resources</a>
 </li>
                                 </ul>
                             </li>
@@ -84,12 +84,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../DataTemplate/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Services/" class="nav-link">
+                                <a rel="next" href="../UI%20Elements/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,12 +111,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#quick-explanation" class="nav-link">Quick Explanation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#binding-properties" class="nav-link">Binding Properties</a>
+            <li class="nav-item" data-bs-level="2"><a href="#when-creating-a-new-usercontrol" class="nav-link">When Creating a New UserControl . . .</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -125,41 +120,30 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="quick-explanation">Quick Explanation</h2>
-<p>MVVM is a design practice that stands form meant to keep things separate and organized:  </p>
-<ul>
-<li><strong>Model</strong> - just has properties, represents a "thing" (e.g. Car.cs)</li>
-<li><strong>View</strong> - the graphics (e.g. MainWindow.xaml)</li>
-<li><strong>ViewModel</strong> - the logic that controls a View (e.g. MainWindowViewModel.xaml)</li>
-</ul>
-<h3 id="note-about-code-behinds">Note about Code-Behinds</h3>
-<p>Each View (e.g. MainWindow.xaml) has a code-behind (MainWindow.xaml.cs). The code-behind is NOT the ViewModel. This is the "old" pre-MVVM way of controlling a View, avoid when possible if you care about MVVM.</p>
-<h2 id="binding-properties">Binding Properties</h2>
-<p>The ViewModel "controls" the View via use of binding, where the code is constantly checking the state of the "observable" properties in the ViewModel, and changing the View automatically as the ViewModel's properties change.</p>
-<h3 id="the-classic-way-inotifypropertychanged">The "Classic" Way (INotifyPropertyChanged)</h3>
-<pre><code class="language-CS">private bool _isStopLightOn;
-public bool isStopLightOn
-{
-    get =&gt; _isStopLightOn;
-    set
-    {
-        if (_isStopLightOn != value)
-        {
-            _isStopLightOn = value;
-            OnPropertyChanged();
-        }
-    }
-}
+<h2 id="when-creating-a-new-usercontrol">When Creating a New UserControl . . .</h2>
+<ol>
+<li>Add any dictionaries you need</li>
+</ol>
+<pre><code class="language-xml">    &lt;UserControl.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;ResourceDictionary.MergedDictionaries&gt;
+                &lt;ResourceDictionary Source=&quot;/ExampleSolution.MVVM;component/Styles/SystemColors.xaml&quot;/&gt;
+                &lt;ResourceDictionary Source=&quot;/ExampleSolution.MVVM;component/Styles/ControlResources.xaml&quot;/&gt;
+            &lt;/ResourceDictionary.MergedDictionaries&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/UserControl.Resources&gt;
 </code></pre>
-<h3 id="community-toolkit">Community Toolkit</h3>
-<p>The "classic" way can now be more concise with Community Toolkit:</p>
-<pre><code class="language-CS">private IQuantity? _localValue;
-public IQuantity? LocalValue 
-{
-    get =&gt; _localValue;
-    set =&gt; SetProperty(ref _localValue, value);
-}
-</code></pre></div>
+<ol>
+<li>Add needed namespaces</li>
+</ol>
+<pre><code class="language-xml">&lt;UserControl
+    . . .
+    xmlns:child=&quot;clr-namespace:ExampleSolution.MVVM.Views.MenuControls.ConfigureControls&quot;
+    xmlns:sc=&quot;clr-namespace:ExampleSolution.MVVM.Views.SettingControls&quot;
+    xmlns:vms=&quot;clr-namespace:ExampleSolution.MVVM.ViewModels.MenuControls&quot;
+    d:DataContext=&quot;{d:DesignInstance vms:ConfigureViewModel}&quot;&gt;
+</code></pre>
+<p>Don't forget to add the DataContext!</p></div>
             </div>
         </div>
 

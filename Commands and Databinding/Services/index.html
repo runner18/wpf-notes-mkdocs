@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Mvvm intro - alexs-wpf-notes</title>
+        <title>Services - alexs-wpf-notes</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -42,11 +42,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Mvvm intro</a>
+    <a href="../mvvm-intro/" class="dropdown-item">Mvvm intro</a>
 </li>
                                     
 <li>
-    <a href="../Services/" class="dropdown-item">Services</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Services</a>
 </li>
                                 </ul>
                             </li>
@@ -84,12 +84,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../mvvm-intro/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Services/" class="nav-link">
+                                <a rel="next" href="../../Solution%20and%20Architecture/solution_structure/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,12 +111,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#quick-explanation" class="nav-link">Quick Explanation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#binding-properties" class="nav-link">Binding Properties</a>
+            <li class="nav-item" data-bs-level="2"><a href="#services" class="nav-link">Services</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -125,41 +120,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="quick-explanation">Quick Explanation</h2>
-<p>MVVM is a design practice that stands form meant to keep things separate and organized:  </p>
-<ul>
-<li><strong>Model</strong> - just has properties, represents a "thing" (e.g. Car.cs)</li>
-<li><strong>View</strong> - the graphics (e.g. MainWindow.xaml)</li>
-<li><strong>ViewModel</strong> - the logic that controls a View (e.g. MainWindowViewModel.xaml)</li>
-</ul>
-<h3 id="note-about-code-behinds">Note about Code-Behinds</h3>
-<p>Each View (e.g. MainWindow.xaml) has a code-behind (MainWindow.xaml.cs). The code-behind is NOT the ViewModel. This is the "old" pre-MVVM way of controlling a View, avoid when possible if you care about MVVM.</p>
-<h2 id="binding-properties">Binding Properties</h2>
-<p>The ViewModel "controls" the View via use of binding, where the code is constantly checking the state of the "observable" properties in the ViewModel, and changing the View automatically as the ViewModel's properties change.</p>
-<h3 id="the-classic-way-inotifypropertychanged">The "Classic" Way (INotifyPropertyChanged)</h3>
-<pre><code class="language-CS">private bool _isStopLightOn;
-public bool isStopLightOn
-{
-    get =&gt; _isStopLightOn;
-    set
-    {
-        if (_isStopLightOn != value)
-        {
-            _isStopLightOn = value;
-            OnPropertyChanged();
-        }
-    }
-}
-</code></pre>
-<h3 id="community-toolkit">Community Toolkit</h3>
-<p>The "classic" way can now be more concise with Community Toolkit:</p>
-<pre><code class="language-CS">private IQuantity? _localValue;
-public IQuantity? LocalValue 
-{
-    get =&gt; _localValue;
-    set =&gt; SetProperty(ref _localValue, value);
-}
-</code></pre></div>
+<h2 id="services">Services</h2></div>
             </div>
         </div>
 

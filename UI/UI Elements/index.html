@@ -44,6 +44,10 @@
 <li>
     <a href="../../Commands%20and%20Databinding/mvvm-intro/" class="dropdown-item">Mvvm intro</a>
 </li>
+                                    
+<li>
+    <a href="../../Commands%20and%20Databinding/Services/" class="dropdown-item">Services</a>
+</li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -60,7 +64,19 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
+    <a href="../DataTemplate/" class="dropdown-item">DataTemplate</a>
+</li>
+                                    
+<li>
+    <a href="../General/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
     <a href="./" class="dropdown-item active" aria-current="page">UI Elements</a>
+</li>
+                                    
+<li>
+    <a href="../UI%20Resources/" class="dropdown-item">UI Resources</a>
 </li>
                                 </ul>
                             </li>
@@ -68,12 +84,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../../Solution%20and%20Architecture/solution_structure/" class="nav-link">
+                                <a rel="prev" href="../General/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../UI%20Resources/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -96,11 +112,6 @@
         <ul class="nav flex-column">
             
             <li class="nav-item" data-bs-level="2"><a href="#navigation" class="nav-link">Navigation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#customize-existing-elements-with-templates" class="nav-link">Customize Existing Elements with Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -142,7 +153,15 @@ Retrieved 2026-05-18, License - CC BY-SA 2.5
 &lt;/TabControl&gt;
 
 </code></pre>
-<h2 id="customize-existing-elements-with-templates">Customize Existing Elements with Templates</h2></div>
+<h3 id="creating-a-dialog">Creating a Dialog</h3>
+<p>Following the MVVM approach, the ViewModel should have no knowledge of the View, and therefore should not be involved with creating a dialog. </p>
+<p>There are a couple of approaches you can take:</p>
+<p><strong>Create a DialogService</strong><br />
+The ViewModel would use this service to create a new window, meaning the ViewModel does not create the window directly.  The window would change depending on the ViewModel type passed in.</p>
+<p><a href="https://stackoverflow.com/questions/25845689/opening-new-window-in-mvvm-wpf">This is a more simple example</a><br />
+<a href="https://stackoverflow.com/questions/3801681/good-or-bad-practice-for-dialogs-in-wpf-with-mvvm?noredirect=1&amp;lq=1">This is a more complex example</a></p>
+<p><strong>The Purist</strong><br />
+<a href="https://stackoverflow.com/questions/1043918/open-file-dialog-mvvm?noredirect=1&amp;lq=1">The top response to this</a>  argues dialogs are a UI thing, meaning only UI should call it even if from the code-behind.</p></div>
             </div>
         </div>
 

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Mvvm intro - alexs-wpf-notes</title>
+        <title>UI Resources - alexs-wpf-notes</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -38,15 +38,15 @@
                                 <a href="../.." class="nav-link">Welcome to MkDocs</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Commands and Databinding</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Mvvm intro</a>
+    <a href="../../Commands%20and%20Databinding/mvvm-intro/" class="dropdown-item">Mvvm intro</a>
 </li>
                                     
 <li>
-    <a href="../Services/" class="dropdown-item">Services</a>
+    <a href="../../Commands%20and%20Databinding/Services/" class="dropdown-item">Services</a>
 </li>
                                 </ul>
                             </li>
@@ -60,23 +60,23 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UI</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UI/DataTemplate/" class="dropdown-item">DataTemplate</a>
+    <a href="../DataTemplate/" class="dropdown-item">DataTemplate</a>
 </li>
                                     
 <li>
-    <a href="../../UI/General/" class="dropdown-item">General</a>
+    <a href="../General/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Elements/" class="dropdown-item">UI Elements</a>
+    <a href="../UI%20Elements/" class="dropdown-item">UI Elements</a>
 </li>
                                     
 <li>
-    <a href="../../UI/UI%20Resources/" class="dropdown-item">UI Resources</a>
+    <a href="./" class="dropdown-item active" aria-current="page">UI Resources</a>
 </li>
                                 </ul>
                             </li>
@@ -84,12 +84,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../UI%20Elements/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Services/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,12 +111,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#quick-explanation" class="nav-link">Quick Explanation</a>
+            <li class="nav-item" data-bs-level="2"><a href="#customize-existing-elements-with-templates" class="nav-link">Customize Existing Elements with Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#binding-properties" class="nav-link">Binding Properties</a>
+            <li class="nav-item" data-bs-level="2"><a href="#have-global-reusable-styles" class="nav-link">Have Global Reusable Styles</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -125,40 +125,42 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="quick-explanation">Quick Explanation</h2>
-<p>MVVM is a design practice that stands form meant to keep things separate and organized:  </p>
-<ul>
-<li><strong>Model</strong> - just has properties, represents a "thing" (e.g. Car.cs)</li>
-<li><strong>View</strong> - the graphics (e.g. MainWindow.xaml)</li>
-<li><strong>ViewModel</strong> - the logic that controls a View (e.g. MainWindowViewModel.xaml)</li>
-</ul>
-<h3 id="note-about-code-behinds">Note about Code-Behinds</h3>
-<p>Each View (e.g. MainWindow.xaml) has a code-behind (MainWindow.xaml.cs). The code-behind is NOT the ViewModel. This is the "old" pre-MVVM way of controlling a View, avoid when possible if you care about MVVM.</p>
-<h2 id="binding-properties">Binding Properties</h2>
-<p>The ViewModel "controls" the View via use of binding, where the code is constantly checking the state of the "observable" properties in the ViewModel, and changing the View automatically as the ViewModel's properties change.</p>
-<h3 id="the-classic-way-inotifypropertychanged">The "Classic" Way (INotifyPropertyChanged)</h3>
-<pre><code class="language-CS">private bool _isStopLightOn;
-public bool isStopLightOn
-{
-    get =&gt; _isStopLightOn;
-    set
-    {
-        if (_isStopLightOn != value)
-        {
-            _isStopLightOn = value;
-            OnPropertyChanged();
-        }
-    }
-}
+<h2 id="customize-existing-elements-with-templates">Customize Existing Elements with Templates</h2>
+<h2 id="have-global-reusable-styles">Have Global Reusable Styles</h2>
+<h3 id="colors">Colors</h3>
+<pre><code class="language-xml">&lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+    &lt;!--Sometimes the &quot;Color&quot; type is needed for setting color--&gt;
+    &lt;Color x:Key=&quot;PrimaryColor&quot;&gt;#c17a0c&lt;/Color&gt;
+    &lt;Color x:Key=&quot;PrimaryVariantColor&quot;&gt;#724332&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnPrimaryColor&quot;&gt;WhiteSmoke&lt;/Color&gt;
+    &lt;Color x:Key=&quot;BackgroundColor&quot;&gt;#080173&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnBackgroundColor&quot;&gt;WhiteSmoke&lt;/Color&gt;
+    &lt;Color x:Key=&quot;SurfaceColor&quot;&gt;Gainsboro&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnSurfaceColor&quot;&gt;#FF0C1C34&lt;/Color&gt;
+
+    &lt;!--Other times the &quot;SolidColorBrush&quot; type is needed instead for setting color--&gt;
+    &lt;!--The &quot;SolidColorBrush&quot; type uses the &quot;Color&quot; type--&gt;
+    &lt;SolidColorBrush x:Key=&quot;Primary&quot; Color=&quot;{StaticResource PrimaryColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;PrimaryVariant&quot; Color=&quot;{StaticResource PrimaryVariantColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnPrimary&quot; Color=&quot;{StaticResource OnPrimaryColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;Background&quot; Color=&quot;{StaticResource BackgroundColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnBackground&quot; Color=&quot;{StaticResource OnBackgroundColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;Surface&quot; Color=&quot;{StaticResource SurfaceColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnSurface&quot; Color=&quot;{StaticResource OnSurfaceColor}&quot;/&gt;
+&lt;/ResourceDictionary&gt;
 </code></pre>
-<h3 id="community-toolkit">Community Toolkit</h3>
-<p>The "classic" way can now be more concise with Community Toolkit:</p>
-<pre><code class="language-CS">private IQuantity? _localValue;
-public IQuantity? LocalValue 
-{
-    get =&gt; _localValue;
-    set =&gt; SetProperty(ref _localValue, value);
-}
+<h3 id="merging-multiple-dictionaries">Merging Multiple Dictionaries</h3>
+<pre><code class="language-xml">&lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+                    xmlns:ui=&quot;http://schemas.lepo.co/wpfui/2022/xaml&quot;
+                    xmlns:sys=&quot;clr-namespace:System;assembly=mscorlib&quot;
+                    xmlns:scvm=&quot;clr-namespace:solution_name.MVVM.ViewModels.SettingControls&quot;
+                    xmlns:sc=&quot;clr-namespace:solution_name.MVVM.Views.SettingControls&quot;&gt;
+
+    &lt;ResourceDictionary.MergedDictionaries&gt;
+        &lt;ResourceDictionary Source=&quot;/solution_name.MVVM;component/Styles/SystemColors.xaml&quot;/&gt;
+    &lt;/ResourceDictionary.MergedDictionaries&gt;
 </code></pre></div>
             </div>
         </div>
