@@ -10,11 +10,11 @@ In a resource dictionary (global or local), add DataTemplate:
     <sc:StringSettingControl MinWidth="400"/>
 </DataTemplate>
 ```
-You can use a UI element such as "ContentControl".  
+Use a UI element such as "ContentControl":
 
 If a ContentControl's source matches the DataType of a DataTemplate, the ContentControl will *transform* into the content of said matching DataTemplate.
 
-ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms accordingly.
+ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms according to a matching DataTemplate.
 
 ## Chatbot Answer
 

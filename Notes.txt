@@ -1,3 +1,5 @@
+======== Useful Git Commands ========
+
 mkdocs new [filepath goes here]             adds project-folder to filepath
 new docs . [empty filepath goes here]       adds project-contents to filepath
 
@@ -19,3 +21,9 @@ mkdocs --version
 
 git add .
 git commit -m "commit message goes here"
+
+git push
+
+
+======== Extensions to Install ========
+awesome-nav, install with pip, include in the mkdocs.yml "plugins:" section
