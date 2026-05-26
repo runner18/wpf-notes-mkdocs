@@ -2,9 +2,10 @@
 
 
 
-======== Git Commands to Deploy and Push Changes ========
+======== Run these Commands to Update the Website ========
 mkdocs build
-mkdcs gh-deploy
+mkdocs gh-deploy
+git add .
 git commit --message "commit message goes here"
 git push
 
@@ -13,7 +14,7 @@ git push
 awesome-nav, install with pip, include in the mkdocs.yml "plugins:" section
 
 
-======== Useful Git Commands ========
+========  Bigger List Useful Git Commands ========
 
 mkdocs new [filepath goes here]             adds project-folder to filepath
 new docs . [empty filepath goes here]       adds project-contents to filepath
