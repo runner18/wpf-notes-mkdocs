@@ -1,3 +1,18 @@
+
+
+
+
+======== Git Commands to Deploy and Push Changes ========
+mkdocs build
+mkdcs gh-deploy
+git commit --message "commit message goes here"
+git push
+
+
+======== Extensions to Install ========
+awesome-nav, install with pip, include in the mkdocs.yml "plugins:" section
+
+
 ======== Useful Git Commands ========
 
 mkdocs new [filepath goes here]             adds project-folder to filepath
@@ -23,7 +38,3 @@ git add .
 git commit -m "commit message goes here"
 
 git push
-
-
-======== Extensions to Install ========
-awesome-nav, install with pip, include in the mkdocs.yml "plugins:" section
