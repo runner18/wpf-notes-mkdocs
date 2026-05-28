@@ -28,6 +28,33 @@
 </ResourceDictionary>
 ```
 
+### How to Reference Multiple Dictionaries
+There are sort of two ways to reference a dictionary:  
+1. Placing a Merged Dictionary directly into a window or control
+2. Add a dictionary to the .exe/main app/program/title project resources
+
+**Method #1 (good): Add a dictionary to the main .exe/app/program resources**
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/AW_DTC.MVVM;component/Dictionary/MVVMResourceDictionary.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+
+**Method #2 (bad): Place a merged dictionary directly into a window or control**
+
+
+
+
+If you place a Merged Dictionary in every single window and control, it creates a copy for each one, which takes up a BUNCH of memory.
+
+Ideally you add a merged dictionary to the App.xaml once. Now everything can access it. (App.xaml, not MainWindow.xaml! child controls may not be a child of MainWindow!)
+
+Dictionaries are referenced based on something called the Visual Tree. I do not understand this yet.
+
 ### Merging Multiple Dictionaries
 ```xml
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
