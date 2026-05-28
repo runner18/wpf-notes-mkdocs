@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>DataTemplate - alexs-wpf-notes</title>
+        <title>UI Dictionary - alexs-wpf-notes</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -87,7 +87,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">DataTemplate</a>
+    <a href="../DataTemplate/" class="dropdown-item">DataTemplate</a>
 </li>
                                     
 <li>
@@ -95,7 +95,7 @@
 </li>
                                     
 <li>
-    <a href="../UI%20Dictionary/" class="dropdown-item">UI Dictionary</a>
+    <a href="./" class="dropdown-item active" aria-current="page">UI Dictionary</a>
 </li>
                                     
 <li>
@@ -107,12 +107,12 @@
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../../Solution%20and%20Architecture/solution_structure/" class="nav-link">
+                                <a rel="prev" href="../General/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../General/" class="nav-link">
+                                <a rel="next" href="../UI%20Elements/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -134,12 +134,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+            <li class="nav-item" data-bs-level="2"><a href="#customize-existing-elements-with-templates" class="nav-link">Customize Existing Elements with Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="2"><a href="#chatbot-answer" class="nav-link">Chatbot Answer</a>
+            <li class="nav-item" data-bs-level="2"><a href="#have-global-reusable-styles" class="nav-link">Have Global Reusable Styles</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -148,106 +148,59 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="summary">Summary</h2>
-<p>DataTemplates let you change the look of UI depending on the data type.</p>
-<p>In a resource dictionary (global or local), add DataTemplate:</p>
-<pre><code class="language-xml">&lt;DataTemplate DataType=&quot;{x:Type scvm:NumericSettingControlViewModel}&quot;&gt;
-    &lt;sc:NumericSettingControl/&gt;
-&lt;/DataTemplate&gt;
-&lt;DataTemplate DataType=&quot;{x:Type scvm:StringSettingControlViewModel}&quot;&gt;
-    &lt;sc:StringSettingControl MinWidth=&quot;400&quot;/&gt;
-&lt;/DataTemplate&gt;
+<h2 id="customize-existing-elements-with-templates">Customize Existing Elements with Templates</h2>
+<h2 id="have-global-reusable-styles">Have Global Reusable Styles</h2>
+<h3 id="colors">Colors</h3>
+<pre><code class="language-xml">&lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+    &lt;!--Sometimes the &quot;Color&quot; type is needed for setting color--&gt;
+    &lt;Color x:Key=&quot;PrimaryColor&quot;&gt;#c17a0c&lt;/Color&gt;
+    &lt;Color x:Key=&quot;PrimaryVariantColor&quot;&gt;#724332&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnPrimaryColor&quot;&gt;WhiteSmoke&lt;/Color&gt;
+    &lt;Color x:Key=&quot;BackgroundColor&quot;&gt;#080173&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnBackgroundColor&quot;&gt;WhiteSmoke&lt;/Color&gt;
+    &lt;Color x:Key=&quot;SurfaceColor&quot;&gt;Gainsboro&lt;/Color&gt;
+    &lt;Color x:Key=&quot;OnSurfaceColor&quot;&gt;#FF0C1C34&lt;/Color&gt;
+
+    &lt;!--Other times the &quot;SolidColorBrush&quot; type is needed instead for setting color--&gt;
+    &lt;!--The &quot;SolidColorBrush&quot; type uses the &quot;Color&quot; type--&gt;
+    &lt;SolidColorBrush x:Key=&quot;Primary&quot; Color=&quot;{StaticResource PrimaryColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;PrimaryVariant&quot; Color=&quot;{StaticResource PrimaryVariantColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnPrimary&quot; Color=&quot;{StaticResource OnPrimaryColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;Background&quot; Color=&quot;{StaticResource BackgroundColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnBackground&quot; Color=&quot;{StaticResource OnBackgroundColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;Surface&quot; Color=&quot;{StaticResource SurfaceColor}&quot;/&gt;
+    &lt;SolidColorBrush x:Key=&quot;OnSurface&quot; Color=&quot;{StaticResource OnSurfaceColor}&quot;/&gt;
+&lt;/ResourceDictionary&gt;
 </code></pre>
-<p>Use a UI element such as "ContentControl":</p>
-<p>If a ContentControl's source matches the DataType of a DataTemplate, the ContentControl will <em>transform</em> into the content of said matching DataTemplate.</p>
-<p>ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms according to a matching DataTemplate.</p>
-<h2 id="chatbot-answer">Chatbot Answer</h2>
-<p>(Take this with a grain of salt it's from a chatbot)</p>
-<p>How to create a ViewModel that can handle multiple data types and read status:</p>
-<pre><code class="language-cs">public enum { PositionerReadWrite, PositionerReadOnly, PcOnly }
-public enum ValueDataType { Numeric, Boolean, Enum, String }
-
-public class ValueViewModel : INotifyPropertyChanged
-{
-    // Identification and configuration
-    public string Label { get; }
-    public ValueCategory Category { get; }
-    public ValueDataType DataType { get; }
-    public bool IsReadOnly { get; } // controls UI editablility
-    public IEnumerable&lt;string&gt; EnumOptions { get; } // only relevant when DataType == Enum
-
-    // The &quot;user-set&quot; value - shown to the user, editable if not read-only
-    [ObservableProperty]
-    public partial DisplayValue { get; set; }
-
-    // The &quot;source&quot; value from HART / DB, for revert or comparison
-    public object SourceValue { get; private set; }
-    public object IsModified { get; private set; }
-
-    // Methods to commit/revert
-    public void AcceptPending() { SourceValue = DisplayValue; IsModified = false; }
-    public void RejectPending() { DisplayValue = SourceValue; IsModified = false; }
-
-    // Logic to save to the right place(s) according to category
-    public async Task SaveAsync()
-    {
-        if (!IsModified) return;
-        if(Category == ValueCategory.PcOnly || Category == ValueCategory.PositionerReadOnly || Category == ValueCategory.PositionerReadWrite)
-        {
-            // always write to database
-            await DatabaseService.WriteAsync(...);
-        }
-        if(Category == ValueCategory.PositionerReadWrite)
-        {
-            // also write to embeddded device
-            await HartService.WriteAsync(...);
-        }
-        AcceptPending();
-    }
-}
+<h3 id="how-to-reference-multiple-dictionaries">How to Reference Multiple Dictionaries</h3>
+<p>There are sort of two ways to reference a dictionary:<br />
+1. Placing a Merged Dictionary directly into a window or control
+2. Add a dictionary to the .exe/main app/program/title project resources</p>
+<p><strong>Method #1 (good): Add a dictionary to the main .exe/app/program resources</strong></p>
+<pre><code class="language-xml">&lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;ResourceDictionary Source=&quot;/AW_DTC.MVVM;component/Dictionary/MVVMResourceDictionary.xaml&quot;/&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;
 </code></pre>
-<p>Implement DataTemplateSelector</p>
-<pre><code class="language-CS">public class ValueTemplateSelector : DataTemplateSelector
-{
-    public DataTemplate NumericReadWriteTemplate { get; set; }
-    public DataTemplate NumericReadOnlyTemplate { get; set; }
-    public DataTemplate BooleanTemplate { get; set; }
-    public DataTemplate EnumTemplate { get; set; }
-    public DataTemplate StringReadWriteTemplate { get; set; }
-    public DataTemplate StringReadOnlyTemplate { get; set; }
+<p><strong>Method #2 (bad): Place a merged dictionary directly into a window or control</strong></p>
+<p>If you place a Merged Dictionary in every single window and control, it creates a copy for each one, which takes up a BUNCH of memory.</p>
+<p>Ideally you add a merged dictionary to the App.xaml once. Now everything can access it. (App.xaml, not MainWindow.xaml! child controls may not be a child of MainWindow!)</p>
+<p>Dictionaries are referenced based on something called the Visual Tree. I do not understand this yet.</p>
+<h3 id="merging-multiple-dictionaries">Merging Multiple Dictionaries</h3>
+<pre><code class="language-xml">&lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+                    xmlns:ui=&quot;http://schemas.lepo.co/wpfui/2022/xaml&quot;
+                    xmlns:sys=&quot;clr-namespace:System;assembly=mscorlib&quot;
+                    xmlns:scvm=&quot;clr-namespace:solution_name.MVVM.ViewModels.SettingControls&quot;
+                    xmlns:sc=&quot;clr-namespace:solution_name.MVVM.Views.SettingControls&quot;&gt;
 
-    public override DataTemplate SelectTemplate(object item, DependencyObject container)
-    {
-        if (item is ValueViewModel vm)
-        {
-            if (vm.DataType == ValueDataType.Enum)
-                return EnumTemplate;
-            if (vm.DataType == ValueDataType.Boolean)
-                return BooleanTemplate;
-            // For numeric/string, factor in read‑only
-            if (vm.IsReadOnly)
-                return vm.DataType == ValueDataType.Numeric ? NumericReadOnlyTemplate : StringReadOnlyTemplate;
-            else
-                return vm.DataType == ValueDataType.Numeric ? NumericReadWriteTemplate : StringReadWriteTemplate;
-        }
-        return base.SelectTemplate(item, container);
-    }
-}
-</code></pre>
-<p>In the XAML:</p>
-<pre><code class="language-xml">&lt;ContentControl Content=&quot;{Binding MyValueViewModel}&quot;
-                ContentTemplateSelector=&quot;{StaticResource ValueTemplateSelector}&quot; /&gt;
-
-&lt;DataTemplate x:Key=&quot;NumericReadWriteTemplate&quot;&gt;
-    &lt;TextBox Text=&quot;{Binding DisplayValue, UpdateSourceTrigger=PropertyChanged}&quot;
-             IsEnabled=&quot;{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}&quot;/&gt;
-&lt;/DataTemplate&gt;
-
-&lt;DataTemplate x:Key=&quot;EnumTemplate&quot;&gt;
-    &lt;ComboBox ItemsSource=&quot;{Binding EnumOptions}&quot;
-              SelectedItem=&quot;{Binding DisplayValue}&quot;
-              IsEnabled=&quot;{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}&quot;/&gt;
-&lt;/DataTemplate&gt;
+    &lt;ResourceDictionary.MergedDictionaries&gt;
+        &lt;ResourceDictionary Source=&quot;/solution_name.MVVM;component/Styles/SystemColors.xaml&quot;/&gt;
+    &lt;/ResourceDictionary.MergedDictionaries&gt;
 </code></pre></div>
             </div>
         </div>
