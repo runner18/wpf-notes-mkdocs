@@ -1,4 +1,5 @@
-# Dispose
+# Memory Management
+## Dispose
 
 ## Events
 If your class subscribes to an event:
@@ -26,3 +27,15 @@ public class ShortLivedHelper : IDisposable
     private void OnDataChanged(object sender, EventArgs e) { }
 }
 ```
+
+## UI Virtualization
+### VirtualizingStackPanel
+### VirtualizationMode=Recycling
+## Freezable Objects
+## Keep Visible Elements Under 2000ish
+### Fallback to OnRender
+### Fallback to DrawingVisual
+## Memory Disposal
+### IDisposal in ViewModel
+### WeakEventManager
+### Unloaded event cleanup

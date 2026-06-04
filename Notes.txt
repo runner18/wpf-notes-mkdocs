@@ -1,4 +1,6 @@
-
+======== Managing Navigation ========
+I have no .nav.yml anywhere.
+Try making sure you have your project running on your local computer files and not on a server.
 
 
 

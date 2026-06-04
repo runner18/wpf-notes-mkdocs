@@ -42,3 +42,15 @@ public IQuantity? LocalValue
 ```
 
 ### PropertyChanged only works inside an ObservableObject
+
+## Binding Modes
+
+## UpdateSourceTrigger
+
+## IValueConverter
+
+## RelativeSource: Self, TemplatedParent, AncestorType
+
+## StringFormat
+
+## ObservableCollection\<T>, CollectionView / CollectionViewSource

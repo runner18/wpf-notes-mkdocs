@@ -21,3 +21,14 @@
     d:DataContext="{d:DesignInstance vms:ConfigureViewModel}">
 ```
 Don't forget to add the DataContext!
+
+## Syntax
+
+
+## Namespaces
+
+## Code-behind vs XAML-only UI
+
+## x:Name vs Name
+
+## Design-time attributes (d:DataContext, d:DesignInstance)

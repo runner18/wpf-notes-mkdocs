@@ -1,3 +1,5 @@
+# Validation and Exceptions
+## test h2 header
 ### Casting/Checking Data Types
 #### is vs as keywords
 
@@ -33,3 +35,14 @@ if(obj is Boat)
 // if obj is not Boat type you will get an error!
 ((Boat)obj).FunctionSpecificToBoatClass();
 ```
+
+## DataErrorInfo
+### IDataErrorInfo (legacy)
+### INotifyDataErrorInfo (modern)
+
+## ValidationRules in binding 
+### ExceptionValidationRule
+## Validation.ErrorTemplate - Custom Visuals
+## Global Exception Handling
+### DispatcherUnhandledException
+### AppDomain.UnhandledException
