@@ -41,3 +41,4 @@ public IQuantity? LocalValue
 }
 ```
 
+### PropertyChanged only works inside an ObservableObject

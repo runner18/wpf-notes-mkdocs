@@ -1,6 +1,22 @@
-## Summary
-DataTemplates let you change the look of UI depending on the data type.
+## ContentTemplate and DataTemplate
+These allow you to change a UI element's content while the program is running.  
+DataTemplate is the actual content with a corresponding DataType, while ContentTemplate
 
+### ContentTemplate
+Gets or sets the the DataTemplate. Multiple elements can use ContentTemplate.   
+Use a UI element such as "ContentControl":
+```xml
+<DataTemplate x:Key="template1">
+  <TextBlock Text="{Binding}" FontSize="12" FontWeight="Bold"   
+            TextWrapping="Wrap"/>
+</DataTemplate>
+
+<ContentControl Name="contCtrl" ContentTemplate="{StaticResource template1}" 
+    Content="This is the content of the content control."/>
+```
+
+### DataTemplate
+DataTemplates let you change the look of UI depending on the data type.  
 In a resource dictionary (global or local), add DataTemplate:
 ```xml
 <DataTemplate DataType="{x:Type scvm:NumericSettingControlViewModel}">
@@ -10,11 +26,48 @@ In a resource dictionary (global or local), add DataTemplate:
     <sc:StringSettingControl MinWidth="400"/>
 </DataTemplate>
 ```
-Use a UI element such as "ContentControl":
-
 If a ContentControl's source matches the DataType of a DataTemplate, the ContentControl will *transform* into the content of said matching DataTemplate.
 
+### ItemsControl
+```xml
+<ItemsControl ItemsSource="{Binding AutoCalResultsList}">
+    <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+            <StackPanel Orientation="Vertical"/>
+        </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+</ItemsControl>
+```
 ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms according to a matching DataTemplate.
+
+### Example #1
+ItemsControl will create a list of UI elements.  
+
+Because of the DataTemplate...  
+if IBoat item in **IBoatList** is type **SpeedBoatClass**  
+its corresponding UI element will be  **NumericSettingControl**.  
+```XML
+<DataTemplate DataType="{x:Type scvm:SpeedBoatClass}">
+    <sc:NumericSettingControl/>
+</DataTemplate>
+<DataTemplate DataType="{x:Type scvm:SailBoatClass}">
+    <sc:StringSettingControl MinWidth="400"/>
+</DataTemplate>
+
+<ItemsControl ItemsSource="{Binding IBoatList}">
+    <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+            <StackPanel Orientation="Vertical"/>
+        </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+</ItemsControl>
+```
+
+### Example #2
+```xml
+<ContentControl Visibility="{Binding UnitsVisiblity, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BooleanSettingControl2}}}"
+                ContentTemplate="{StaticResource UnitsTemplate}" Focusable="false" Content="{Binding}"/>
+```
 
 ## Chatbot Answer
 

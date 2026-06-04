@@ -50,7 +50,40 @@ The ViewModel would use this service to create a new window, meaning the ViewMod
 [The top response to this](https://stackoverflow.com/questions/1043918/open-file-dialog-mvvm?noredirect=1&lq=1)  argues dialogs are a UI thing, meaning only UI should call it even if from the code-behind.
 
 
+## Handling Images  
+In short, set the Image's source to either BitmapImage or a Uri.
 
+Ways to set the image types:
+- Image.Source > Uri
+- Image.Source > ImageSource/BitmapSource/BitmapImage > BitmapImage.UriSource  
+  
+Here's a full layout of image related classes, I found the names confusing:
+
+- *System.Foundation namespace*
+  - public sealed class **Uri** (the filepath)
+- *System.Drawing namespace*
+  - public abstract class **Image** (do NOT use for images like png)
+- *System.Windows namespace*
+  - *Controls namespace*
+    - public abstract class **Image** (the UI element itself)
+      - public ImageSource **Image.Source** (can set to ImageSource or Uri directly)
+  - *Media namespace*
+    - public abstract class **ImageSource**
+    - *Imaging namespace*  
+      - public abstract class  **BitmapSource** : ImageSource 
+        - public sealed class **BitmapImage** : BitmapSource
+          - public Uri **BitmapImage.UriSource** (the image's filepath)
+
+
+
+Some examples: 
+```CS
+```
+
+1. Take the Uri
+2. Set BitmapImage.Source to the Uri
+3. Set the Image.Source to the BitmapImage
+4. Altenatively, you can set the Image.Source directly to the Uri
 
 
 
