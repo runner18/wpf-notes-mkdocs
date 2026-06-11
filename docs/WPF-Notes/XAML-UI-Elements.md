@@ -74,7 +74,7 @@ Here's a full layout of image related classes, I found the names confusing:
         - public sealed class **BitmapImage** : BitmapSource
           - public Uri **BitmapImage.UriSource** (the image's filepath)
 
-
+Remember to set image to copy to output directory!
 
 Some examples: 
 ```CS
@@ -93,3 +93,101 @@ Some examples:
 ## HeaderedContentControl
 
 ## UserControl, CustomControl, CustomPanel
+
+
+## ComboBox
+In the CS:
+```CS
+public class Person
+{
+  public string Name;
+  public int Age;
+  public string Gender;
+}
+
+// assume this collection is already full of Person objects
+ObservableCollection<Person> PersonCollection { get; } = new ObservableCollection();
+
+public Person PersonYouWantToBindTo = new Person();
+public string GenderYouWantToBindTo = string.Empty;
+
+```
+
+XAML Scenario #1 - the combo box will display** the names in the dropdown UI**, and will **give you a person object**
+
+```xml
+<ComboBox ItemsSource = {Binding PersonCollection}
+  DisplayMemberPath = "Name"
+  SelectedItem = {Binding PersonYouWantToBindTo}>
+```
+
+XAML Scenario #2 - the combo box will **display the names in the dropdown UI**, and will **give you a gender string**
+```XML
+<ComboBox ItemsSource = {Binding PersonCollection}
+  DisplayMemberPath = "Name"
+  SelectedValuePath = "Gender"
+  SelectedValue = {Binding GenderYouWantToBindTo}/>
+  ```
+
+## Datagrid
+DataGrid is used when you need to be able to edit stuff in your tabloe. Also supports automatic column generation.
+
+To set the content of DataGrid
+- set dataGrid.ItemsSource to "List\<ExampleClass> listOfObjects"
+- Each object in listOfObjects will be a **row** in dataGrid
+- eac property in ExampleClass can be a **column** in dataGrid
+
+DataGrid auto generates each column based on each public property in ExampleClass. Set dataGrid.AutoGenerateColumns to **false** to add the columns yourself (don't forget to bind the column to a property in the object's class).
+
+A helpful example:  https://wpf-tutorial.com/datagrid-control/custom-columns/
+
+```XML
+<DataGrid Name="dgUsers" AutoGenerateColumns="False">
+  <DataGrid.Columns>
+
+      <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+
+      <DataGridTemplateColumn Header="Birthday">
+          <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                  <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+              </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+      </DataGridTemplateColumn>
+
+  </DataGrid.Columns>
+</DataGrid>
+```
+
+```CS
+using System;
+using System.Collections.Generic;
+using System.Windows;
+
+namespace WpfTutorialSamples.DataGrid_control
+{
+	public partial class DataGridColumnsSample : Window
+	{
+		public DataGridColumnsSample()
+		{
+			InitializeComponent();
+
+			List<User> users = new List<User>();
+			users.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
+			users.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17) });
+			users.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
+
+			dgUsers.ItemsSource = users;
+		}
+	}
+
+	public class User
+	{
+		public int Id { get; set; }
+
+		public string Name { get; set; }
+
+		public DateTime Birthday { get; set; }
+	}
+}
+```

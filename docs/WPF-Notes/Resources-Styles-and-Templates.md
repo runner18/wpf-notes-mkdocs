@@ -1,4 +1,8 @@
 # Resources Styles and Templates
+
+## Table of Contents
+
+
 ## ContentTemplate and DataTemplate
 These allow you to change a UI element's content while the program is running.  
 DataTemplate is the actual content with a corresponding DataType, while ContentTemplate
@@ -70,101 +74,6 @@ its corresponding UI element will be  **NumericSettingControl**.
                 ContentTemplate="{StaticResource UnitsTemplate}" Focusable="false" Content="{Binding}"/>
 ```
 
-## Chatbot Answer
-
-(Take this with a grain of salt it's from a chatbot)
-
-How to create a ViewModel that can handle multiple data types and read status:
-```cs
-public enum { PositionerReadWrite, PositionerReadOnly, PcOnly }
-public enum ValueDataType { Numeric, Boolean, Enum, String }
-
-public class ValueViewModel : INotifyPropertyChanged
-{
-    // Identification and configuration
-    public string Label { get; }
-    public ValueCategory Category { get; }
-    public ValueDataType DataType { get; }
-    public bool IsReadOnly { get; } // controls UI editablility
-    public IEnumerable<string> EnumOptions { get; } // only relevant when DataType == Enum
-    
-    // The "user-set" value - shown to the user, editable if not read-only
-    [ObservableProperty]
-    public partial DisplayValue { get; set; }
-
-    // The "source" value from HART / DB, for revert or comparison
-    public object SourceValue { get; private set; }
-    public object IsModified { get; private set; }
-
-    // Methods to commit/revert
-    public void AcceptPending() { SourceValue = DisplayValue; IsModified = false; }
-    public void RejectPending() { DisplayValue = SourceValue; IsModified = false; }
-
-    // Logic to save to the right place(s) according to category
-    public async Task SaveAsync()
-    {
-        if (!IsModified) return;
-        if(Category == ValueCategory.PcOnly || Category == ValueCategory.PositionerReadOnly || Category == ValueCategory.PositionerReadWrite)
-        {
-            // always write to database
-            await DatabaseService.WriteAsync(...);
-        }
-        if(Category == ValueCategory.PositionerReadWrite)
-        {
-            // also write to embeddded device
-            await HartService.WriteAsync(...);
-        }
-        AcceptPending();
-    }
-}
-```
-
-Implement DataTemplateSelector
-```CS
-public class ValueTemplateSelector : DataTemplateSelector
-{
-    public DataTemplate NumericReadWriteTemplate { get; set; }
-    public DataTemplate NumericReadOnlyTemplate { get; set; }
-    public DataTemplate BooleanTemplate { get; set; }
-    public DataTemplate EnumTemplate { get; set; }
-    public DataTemplate StringReadWriteTemplate { get; set; }
-    public DataTemplate StringReadOnlyTemplate { get; set; }
-
-    public override DataTemplate SelectTemplate(object item, DependencyObject container)
-    {
-        if (item is ValueViewModel vm)
-        {
-            if (vm.DataType == ValueDataType.Enum)
-                return EnumTemplate;
-            if (vm.DataType == ValueDataType.Boolean)
-                return BooleanTemplate;
-            // For numeric/string, factor in read‑only
-            if (vm.IsReadOnly)
-                return vm.DataType == ValueDataType.Numeric ? NumericReadOnlyTemplate : StringReadOnlyTemplate;
-            else
-                return vm.DataType == ValueDataType.Numeric ? NumericReadWriteTemplate : StringReadWriteTemplate;
-        }
-        return base.SelectTemplate(item, container);
-    }
-}
-```
-
-In the XAML:
-```xml
-<ContentControl Content="{Binding MyValueViewModel}"
-                ContentTemplateSelector="{StaticResource ValueTemplateSelector}" />
-
-<DataTemplate x:Key="NumericReadWriteTemplate">
-    <TextBox Text="{Binding DisplayValue, UpdateSourceTrigger=PropertyChanged}"
-             IsEnabled="{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}"/>
-</DataTemplate>
-
-<DataTemplate x:Key="EnumTemplate">
-    <ComboBox ItemsSource="{Binding EnumOptions}"
-              SelectedItem="{Binding DisplayValue}"
-              IsEnabled="{Binding IsReadOnly, Converter={StaticResource InvertBoolConverter}}"/>
-</DataTemplate>
-```
 
 
 ## Customize Existing Elements with Templates
@@ -197,46 +106,7 @@ In the XAML:
 </ResourceDictionary>
 ```
 
-### How to Reference Multiple Dictionaries
-There are sort of two ways to reference a dictionary:  
-1. Placing a Merged Dictionary directly into a window or control
-2. Add a dictionary to the .exe/main app/program/title project resources
 
-**Method #1 (good): Add a dictionary to the main .exe/app/program resources**
-```xml
-<Application.Resources>
-    <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="/AW_DTC.MVVM;component/Dictionary/MVVMResourceDictionary.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-</Application.Resources>
-```
-
-**Method #2 (bad): Place a merged dictionary directly into a window or control**
-
-
-
-
-If you place a Merged Dictionary in every single window and control, it creates a copy for each one, which takes up a BUNCH of memory.
-
-Ideally you add a merged dictionary to the App.xaml once. Now everything can access it. (App.xaml, not MainWindow.xaml! child controls may not be a child of MainWindow!)
-
-Dictionaries are referenced based on something called the Visual Tree. I do not understand this yet.
-
-### Merging Multiple Dictionaries
-```xml
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:scvm="clr-namespace:solution_name.MVVM.ViewModels.SettingControls"
-                    xmlns:sc="clr-namespace:solution_name.MVVM.Views.SettingControls">
-
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/solution_name.MVVM;component/Styles/SystemColors.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
-```
 
 ## Styles
 
@@ -256,6 +126,68 @@ Dictionaries are referenced based on something called the Visual Tree. I do not 
 
 ## Scope: Application.Resources, Window.Resouces, FrameworkElement.Resources
 
-## Merged dictionaries (modular styles)
+## Add Global Resource (ResourceDictionary, MergedDictionaries)
+
+### Add integers, etc.
+Add this to the namesapce:
+```xml
+xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+```
+
+Add this to the Resource Dictionary
+```xml
+<sys:Int32 x:Key="FuelChannelNameWidth">215</sys:Int32>
+```
+
+Use this in code-behind:
+```CS
+object? widthResource = this.TryFindResource("FuelChannelNameWidth");
+if(widthResource is int channelWidth)
+{
+    b.DescriptionWidth = channelWidth;
+}
+```
+
+### Merge Dictionaries
+Dictionaries let you store styles and other values that you need global, reusable access to.
+
+**Method #1 (GOOD, USE THIS): Add a dictionary to the App.xaml in the main .exe/app/program resources**
+```xml
+<!--Inside App.xaml; you can reference your UI-related project from the main project-->
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/ExampleSolution.MVVM;component/Dictionary/MVVMResourceDictionary.xaml"/>
+            <ResourceDictionary Source="/ExampleSolution.MVVM;component/Styles/ControlResources.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+Now these dictionaries are readable everywhere and only loaded once!
+Make sure the Source path is correct!  
+[Blog post](https://ikriv.com/blog/?p=1551) on this, You can also [add it to code-behind of app.xaml if you need](https://stackoverflow.com/a/9739536)  
+
+#### Troubleshoot
+Warning: I did run into an issue where the Views were not seeing the StaticResource's. For some reason the InvalidatesImplicitDataTemplateResources property for a ResourceDictionary was checked by default. Then it fixed itself. I do not know why.
+
+**Method #2 (NOT IDEAL): Place merged dictionary in every single control/window**
+```XML
+    <!--This will create a copy of the dictionary for EVERY window/control which takes up a bunch of memory-->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DynaFlo_PC_App.MVVM;component/Styles/SystemColors.xaml"/>
+                <ResourceDictionary Source="/DynaFlo_PC_App.MVVM;component/Styles/ControlResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+```
+If you place a Merged Dictionary in every single window and control, it creates a copy for each one, which takes up a BUNCH of memory.
+
+Ideally you add a merged dictionary to the App.xaml once. Now everything can access it. (App.xaml, not MainWindow.xaml! child controls may not be a child of MainWindow!)
+
+Dictionaries are referenced based on something called the Visual Tree. I do not understand this yet.
+
 
 ## x:Shared="False"
+
