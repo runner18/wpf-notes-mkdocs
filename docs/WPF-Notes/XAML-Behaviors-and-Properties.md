@@ -55,3 +55,4 @@ In my case I had the wrong first parameter for DependencyProperty.Register().
 ### EventTrigger
 ## Custom Attached Behaviors
 ### UI Logic without Code-Behind
+This is a test change
