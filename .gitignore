@@ -11,3 +11,6 @@ env/
 
 # vs code stuff
 *.code-workspace
+
+# Obsidian
+.obsidian/
