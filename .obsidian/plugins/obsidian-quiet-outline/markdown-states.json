@@ -11,9 +11,7 @@
         "ch": 11
       }
     },
-    "expandedKeys": [
-      "item-1-0"
-    ]
+    "expandedKeys": []
   },
   "docs/WPF-Notes/Debugging-Testing-and-Deployment.md": {
     "scroll": 0,
@@ -28,13 +26,7 @@
       }
     },
     "expandedKeys": [
-      "item-1-0",
-      "item-2-1",
-      "item-2-7",
-      "item-2-10",
-      "item-2-14",
-      "item-2-18",
-      "item-2-23"
+      "item-2-0"
     ]
   },
   "docs/WPF-Notes/Memory-Management.md": {
@@ -178,10 +170,8 @@
       }
     },
     "expandedKeys": [
-      "item-2-1",
       "item-1-0",
-      "item-2-6",
-      "item-2-10"
+      "item-2-1"
     ]
   },
   "docs/WPF-Notes/XAML-Fundamentals.md": {
@@ -228,5 +218,36 @@
       }
     },
     "expandedKeys": []
+  },
+  "docs/WPF-Notes/External-Libraries/UnitsNet.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "docs/WPF-Notes/XAML-Low-Level.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-2",
+      "item-1-0"
+    ]
   }
 }

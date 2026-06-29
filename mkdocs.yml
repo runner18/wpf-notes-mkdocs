@@ -2,3 +2,5 @@ site_name: alexs-wpf-notes
 plugins:
   - search
   - awesome-nav
+theme:
+  name: material
