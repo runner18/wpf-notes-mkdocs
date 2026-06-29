@@ -113,7 +113,7 @@ public string GenderYouWantToBindTo = string.Empty;
 
 ```
 
-XAML Scenario #1 - the combo box will display** the names in the dropdown UI**, and will **give you a person object**
+XAML Scenario #1 - the combo box will display **the names in the dropdown UI**, and will **give you a person object**
 
 ```xml
 <ComboBox ItemsSource = {Binding PersonCollection}
@@ -128,6 +128,89 @@ XAML Scenario #2 - the combo box will **display the names in the dropdown UI**, 
   SelectedValuePath = "Gender"
   SelectedValue = {Binding GenderYouWantToBindTo}/>
   ```
+
+### Bind ComboBox to Enum
+Add the following classes:
+
+
+```CS
+public static class EnumDataBindingHelper
+{
+    public static string Description(this Enum value)
+    {
+        object?[]? attributes = value.GetType().GetField(value.ToString())?.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        if (attributes is null)
+            return string.Empty;
+        if(attributes.Any())
+        {
+            if(attributes.First() is DescriptionAttribute da)
+            {
+                return da.Description;
+            }
+        } 
+
+        // If no description is found, the least we can do is replace underscores with spaces
+        // You can add your own custom default formatting logic here
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+        return ti.ToTitleCase(ti.ToLower(value.ToString().Replace("_", " ")));
+    }
+
+    public static IEnumerable<ValueDescription> GetAllValuesAndDescriptions(Type t)
+    {
+        if (!t.IsEnum)
+            throw new ArgumentException($"{nameof(t)} must be enum type");
+
+        return Enum.GetValues(t).Cast<Enum>().Select(
+            (e) => new ValueDescription() { Value = e, Description = e.Description() }).ToList();
+    }
+
+}
+```
+
+
+```CS
+class EnumToCollectionConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return EnumDataBindingHelper.GetAllValuesAndDescriptions(value.GetType());
+    }
+    public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return null;
+    }
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+}
+```
+
+
+```CS
+public class ValueDescription
+{
+    public object? Value { get; set; }
+    public object? Description { get; set; }
+}
+```
+
+Then in the xaml:
+```xml
+<UserControl . . .
+             xmlns:edb="clr-namespace:ExampleSolution.MVVM.Extensions.EnumDataBinding">
+
+<DataTemplate DataType="{x:Type sys:Enum}">
+    <ComboBox ItemsSource="{Binding Path=., 
+                  Converter={edb:EnumToCollectionConverter}, 
+                  Mode=OneTime}"
+               SelectedValuePath="Value" 
+               DisplayMemberPath="Description"
+               SelectedValue="{Binding Path=., 
+                  Mode=TwoWay, 
+                  UpdateSourceTrigger=PropertyChanged}"/>
+</DataTemplate>
+```
 
 ## Datagrid
 DataGrid is used when you need to be able to edit stuff in your tabloe. Also supports automatic column generation.

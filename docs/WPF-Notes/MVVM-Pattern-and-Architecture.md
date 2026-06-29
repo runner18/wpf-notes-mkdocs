@@ -75,13 +75,148 @@ public partial class ExampleClass : ObservableObject
 
 ### PropertyChanged only works inside an ObservableObject
 
+## Troubleshooting Data Binding
+To troubleshoot data binding issues, you want to check every step of the way to make sure things are changing. Some things you can do:
 
+Trace Level High
+
+Set trace level for binding to high.
+```XML
+Add this:
+xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+
+<TextBox 
+       Text="{Binding Value, 
+                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:EditValueControl}}, 
+                    Mode=TwoWay, 
+                    diag:PresentationTraceSources.TraceLevel=High, 
+                    UpdateSourceTrigger=PropertyChanged}" 
+                Background="White"   
+                Width="150" />
+```
+
+### DependencyProperty
+
+If your binding involves a DependencyProperty of a user control, is the binding inside the user control using the RelativeSource FindAncestor stuff?
+
+### Copy by Reference!
+If you are binding with primatives (string, bool, int, etc.), remember they copy by VALUE not reference, meaning their bindings will NOT copy if you do booleanA = booleanB
+
+
+```
+
+```CS
+var person = new Person { Name = "Alice" };
+localValue.EditValue = person;
+
+localValue.EditValue = new Person { Name = "Bob" };
+// 'person' still points to Alice — you just redirected EditValue
+```
+
+``` CS
+// Another example:
+private string _testStringInstance;
+public string TestStringInstance
+{
+    get
+    {
+        return _testStringInstance;
+    }
+    set
+    {
+        SetProperty(ref _testStringInstance, value);
+    }
+}
+
+[ObservableProperty]
+public partial LocalValue TestLocalValue { get; set; } = new LocalValue(); 
+
+// in the constructor. . . 
+TestStringInstance = "this is a test string";
+TestLocalValue = new LocalValue()
+{
+    Label = "test string",
+    DisplayValue = TestStringInstance,
+    EditValue = TestStringInstance, // as soon as EditValue binds to a textbox, EditValue will cut ties with TestStringInstance
+};
+
+// !!! as soon as TestLocalValue.EditValue binds to a textbox, EditValue will cut ties with TestStringInstance and TestStringInstance will NOT change at all
+```
 ## Binding Modes
 
 ## UpdateSourceTrigger
 
 ## IValueConverter
 
+Converts a thing into a xaml-friendly thing.
+
+### Example: EnumToCollectionConverter
+```XML
+<DataTemplate DataType="{x:Type sys:Enum}">
+    <StackPanel>
+        <ComboBox 
+            ItemsSource="{Binding Path=., Converter={edb:EnumToCollectionConverter}, Mode=TwoWay}"
+            SelectedValuePath="Value" 
+            DisplayMemberPath="Description"
+            SelectedValue="{Binding Path=., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            IsReadOnly="True"/>
+    </StackPanel>
+</DataTemplate>
+```
+
+```CS
+class EnumToCollectionConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return EnumDataBindingHelper.GetAllValuesAndDescriptions(value.GetType());
+    }
+    public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return null;
+    }
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+}
+```
+
+```CS
+public static class EnumDataBindingHelper
+{
+    public static string Description(this Enum value)
+    {
+        object?[]? attributes = value.GetType().GetField(value.ToString())?.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        if (attributes is null)
+            return string.Empty;
+        if(attributes.Any())
+        {
+            if(attributes.First() is DescriptionAttribute da)
+            {
+                return da.Description;
+            }
+        } 
+
+        // If no description is found, the least we can do is replace underscores with spaces
+        // You can add your own custom default formatting logic here
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+        return ti.ToTitleCase(ti.ToLower(value.ToString().Replace("_", " ")));
+    }
+
+    public static IEnumerable<ValueDescription> GetAllValuesAndDescriptions(Type t)
+    {
+        if (!t.IsEnum)
+            throw new ArgumentException($"{nameof(t)} must be enum type");
+
+        return Enum.GetValues(t).Cast<Enum>().Select(
+            (e) => new ValueDescription() { Value = e, Description = e.Description() }).ToList();
+    }
+
+}
+```
+
+I feel like the EnumDataBindingHelper could be combined with the EnumToCollectionConverter.
 ## RelativeSource: Self, TemplatedParent, AncestorType
 
 ## StringFormat

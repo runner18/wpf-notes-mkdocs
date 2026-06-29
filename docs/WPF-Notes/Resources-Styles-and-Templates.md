@@ -3,11 +3,9 @@
 ## Table of Contents
 
 
-## ContentTemplate and DataTemplate
-These allow you to change a UI element's content while the program is running.  
-DataTemplate is the actual content with a corresponding DataType, while ContentTemplate
 
-### ContentTemplate
+
+### ContentControl
 Gets or sets the the DataTemplate. Multiple elements can use ContentTemplate.   
 Use a UI element such as "ContentControl":
 ```xml
@@ -19,6 +17,8 @@ Use a UI element such as "ContentControl":
 <ContentControl Name="contCtrl" ContentTemplate="{StaticResource template1}" 
     Content="This is the content of the content control."/>
 ```
+
+### ContentTemplate
 
 ### DataTemplate
 DataTemplates let you change the look of UI depending on the data type.  
@@ -33,6 +33,21 @@ In a resource dictionary (global or local), add DataTemplate:
 ```
 If a ContentControl's source matches the DataType of a DataTemplate, the ContentControl will *transform* into the content of said matching DataTemplate.
 
+#### Example: DataType="{x:Type sys:Int32}", etc.
+```xml
+<UserControl 
+    x:Class="DynaFlo_PC_App.MVVM.Views.ValueControls.LocalValueControl"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type sys:Int32}">
+            <TextBox Text="{Binding Path=.}" Width="200"/>
+        </DataTemplate>
+    </UserControl.Resources>
+     
+</UserControl>
+```
+
 ### ItemsControl
 ```xml
 <ItemsControl ItemsSource="{Binding AutoCalResultsList}">
@@ -44,6 +59,7 @@ If a ContentControl's source matches the DataType of a DataTemplate, the Content
 </ItemsControl>
 ```
 ItemsControl is similar except it makes a UI list by binding to, well, a list (ObservableCollection, whatever). Each member of the list transforms according to a matching DataTemplate.
+
 
 ### Example #1
 ItemsControl will create a list of UI elements.  
@@ -74,7 +90,21 @@ its corresponding UI element will be  **NumericSettingControl**.
                 ContentTemplate="{StaticResource UnitsTemplate}" Focusable="false" Content="{Binding}"/>
 ```
 
+### Troubleshooting
+#### Two-way binding requires Path
+Change this:
+```xml
+<DataTemplate DataType="{x:Type sys:String}">
+    <TextBox Text="{Binding}" Width="200"/>
+</DataTemplate>
+```
 
+To this:
+```xml
+<DataTemplate DataType="{x:Type sys:String}">
+    <TextBox Text="{Binding Path=.}" Width="200"/>
+</DataTemplate>
+```
 
 ## Customize Existing Elements with Templates
 
@@ -117,7 +147,41 @@ its corresponding UI element will be  **NumericSettingControl**.
 ### TargetType
 
 ## ControlTemplate
+[link to MS docs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=windowsdesktop-10.0)
 
+```XML
+<!--button style 2-->
+<Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="BorderBrush" Value="{StaticResource OnBackground}"/>
+    <Setter Property="BorderThickness" Value="3"/>
+    <Setter Property="Border.CornerRadius" Value="3"/>
+    <Setter Property="Background" Value="{StaticResource Primary}"/>
+    <Setter Property="Padding" Value="10,5"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+                <Border x:Name="border" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        Background="{TemplateBinding Background}" 
+                        SnapsToDevicePixels="True"
+                        CornerRadius="{TemplateBinding Border.CornerRadius}">
+                    <ContentPresenter x:Name="contentPresenter"
+                                      Focusable="False"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}"
+                                      RecognizesAccessKey="True"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+```
+Note: **CornerRadius="{Binding Border.CornerRadius}"** 
+allows border radius to be set from outside template
 ## DataTemplate
 
 ## Triggers
@@ -141,7 +205,7 @@ Add this to the Resource Dictionary
 
 Use this in code-behind:
 ```CS
-object? widthResource = this.TryFindResource("FuelChannelNameWidth");
+object? widthResource = Application.Current.TryFindResource("FuelChannelNameWidth");
 if(widthResource is int channelWidth)
 {
     b.DescriptionWidth = channelWidth;

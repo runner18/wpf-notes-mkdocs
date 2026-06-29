@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "98eb93dcefb6c450",
+    "type": "split",
+    "children": [
+      {
+        "id": "29a41c3d12a12106",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "599f903a2c5f9d7f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/WPF-Notes/Routed-Events-and-Window-Nav.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Routed-Events-and-Window-Nav"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c34484d8ba4c887b",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b96dff90a27de87",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a58092a0b2d34a22",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3c3f54d9242d0ce9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ebb781ee85570798",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 355.5
+  },
+  "right": {
+    "id": "43c3df1808f56747",
+    "type": "split",
+    "children": [
+      {
+        "id": "887d1428cff9c2a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "47b939f821f9e4c4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/WPF-Notes/XAML-UI-Elements.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for XAML-UI-Elements"
+            }
+          },
+          {
+            "id": "c82ec8c6251bdb95",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/WPF-Notes/XAML-UI-Elements.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from XAML-UI-Elements"
+            }
+          },
+          {
+            "id": "c90eb05a66f0c77d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "fd9d705557cc81e1",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "8c6544b11b1026cf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/WPF-Notes/XAML-UI-Elements.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of XAML-UI-Elements"
+            }
+          },
+          {
+            "id": "3ec1d2c3d3996334",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {},
+              "icon": "lines-of-text",
+              "title": "Quiet Outline"
+            }
+          },
+          {
+            "id": "02da2975e7c0f9df",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 398.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "02da2975e7c0f9df",
+  "lastOpenFiles": [
+    "site/WPF-Notes/Dependencies-Packages-NuGet/index.html",
+    "site/WPF-Notes/Dependencies-Packages-NuGet",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
+    "docs/WPF-Notes/XAML-UI-Elements.md",
+    "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
+    "docs/WPF-Notes/XAML-Fundamentals.md",
+    "docs/WPF-Notes/XAML-Layouts.md",
+    "docs/WPF-Notes/Validation-and-Exceptions.md",
+    "docs/WPF-Notes/Dependencies-Packages-NuGet.md",
+    "docs/WPF-Notes/Resources-Styles-and-Templates.md",
+    "docs/WPF-Notes/Memory-Management.md",
+    "docs/WPF-Notes/Debugging-Testing-and-Deployment.md",
+    "docs/WPF-Notes/Commands-Events-and-Input-Handling.md",
+    "2026-06-17.md"
+  ]
+}

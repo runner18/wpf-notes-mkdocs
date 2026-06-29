@@ -1,0 +1,232 @@
+{
+  "docs/WPF-Notes/Commands-Events-and-Input-Handling.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 1,
+        "ch": 11
+      },
+      "to": {
+        "line": 1,
+        "ch": 11
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "docs/WPF-Notes/Debugging-Testing-and-Deployment.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-1",
+      "item-2-7",
+      "item-2-10",
+      "item-2-14",
+      "item-2-18",
+      "item-2-23"
+    ]
+  },
+  "docs/WPF-Notes/Memory-Management.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 35,
+        "ch": 23
+      },
+      "to": {
+        "line": 35,
+        "ch": 23
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md": {
+    "scroll": 40.73809523809524,
+    "cursor": {
+      "from": {
+        "line": 224,
+        "ch": 0
+      },
+      "to": {
+        "line": 224,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-5",
+      "item-1-0",
+      "item-2-30",
+      "item-2-25",
+      "item-2-17",
+      "item-2-22",
+      "item-2-27",
+      "item-2-12"
+    ]
+  },
+  "docs/WPF-Notes/Resources-Styles-and-Templates.md": {
+    "scroll": 93.05427209387605,
+    "cursor": {
+      "from": {
+        "line": 183,
+        "ch": 1
+      },
+      "to": {
+        "line": 183,
+        "ch": 1
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-14",
+      "item-2-12",
+      "item-3-9",
+      "item-2-1",
+      "item-3-4"
+    ]
+  },
+  "docs/WPF-Notes/XAML-UI-Elements.md": {
+    "scroll": 197.41796875,
+    "cursor": {
+      "from": {
+        "line": 214,
+        "ch": 0
+      },
+      "to": {
+        "line": 214,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-8"
+    ]
+  },
+  "docs/WPF-Notes/Untitled.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "docs/WPF-Notes/Dependencies-Packages-NuGet.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-0"
+    ]
+  },
+  "docs/WPF-Notes/Validation-and-Exceptions.md": {
+    "scroll": 53.110732009925556,
+    "cursor": {
+      "from": {
+        "line": 71,
+        "ch": 69
+      },
+      "to": {
+        "line": 71,
+        "ch": 69
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-1",
+      "item-3-2",
+      "item-2-4",
+      "item-2-7",
+      "item-2-10"
+    ]
+  },
+  "docs/WPF-Notes/XAML-Behaviors-and-Properties.md": {
+    "scroll": 23.029017857142858,
+    "cursor": {
+      "from": {
+        "line": 49,
+        "ch": 28
+      },
+      "to": {
+        "line": 49,
+        "ch": 28
+      }
+    },
+    "expandedKeys": [
+      "item-2-1",
+      "item-1-0",
+      "item-2-6",
+      "item-2-10"
+    ]
+  },
+  "docs/WPF-Notes/XAML-Fundamentals.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "docs/WPF-Notes/XAML-Layouts.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-10",
+      "item-1-0"
+    ]
+  },
+  "docs/WPF-Notes/Routed-Events-and-Window-Nav.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  }
+}
