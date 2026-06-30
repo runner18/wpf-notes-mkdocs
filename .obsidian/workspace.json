@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/WPF-Notes/XAML-UI-Elements.md",
+                "file": "docs/WPF-Notes/Reflection.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of XAML-UI-Elements"
+              "title": "Outline of Reflection"
             }
           },
           {
