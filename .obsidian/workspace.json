@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
+                "file": "docs/WPF-Notes/Reflection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "XAML-Behaviors-and-Properties"
+              "title": "Reflection"
             }
           }
         ]
@@ -176,7 +176,7 @@
             }
           },
           {
-            "id": "02da2975e7c0f9df",
+            "id": "eeb73db8afd64034",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -204,11 +204,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "599f903a2c5f9d7f",
+  "active": "eeb73db8afd64034",
   "lastOpenFiles": [
+    "docs/WPF-Notes/Resources-Styles-and-Templates.md",
+    "docs/WPF-Notes/Reflection.md",
+    "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
+    "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
     "docs/WPF-Notes/XAML-Fundamentals.md",
     "docs/WPF-Notes/XAML-Low-Level.md",
-    "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
     "docs/WPF-Notes/Memory-Management.md",
     "docs/WPF-Notes/images/image.png",
     "docs/WPF-Notes/External-Libraries/UnitsNet.md",
@@ -220,11 +223,9 @@
     "site/WPF-Notes/Dependencies-Packages-NuGet",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
     "docs/WPF-Notes/XAML-UI-Elements.md",
     "docs/WPF-Notes/XAML-Layouts.md",
     "docs/WPF-Notes/Validation-and-Exceptions.md",
-    "docs/WPF-Notes/Resources-Styles-and-Templates.md",
     "2026-06-17.md"
   ]
 }

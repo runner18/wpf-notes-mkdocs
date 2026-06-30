@@ -224,6 +224,54 @@ I feel like the EnumDataBindingHelper could be combined with the EnumToCollectio
 ## ObservableCollection\<T>, CollectionView / CollectionViewSource
 ## Service Layer and Dependency Injection
 ### Constructor Injection
+Example:
+```CS
+// SolutionName.Shared.SharedExtensions SharedExtensions.cs
+public static class SharedExtensions
+{
+	public static IHostApplicationBuilder AddSharedDefaults(this IHostApplicationBuilder builder)
+	{
+		builder.Services.AddSingleton(ExampleClass)();
+		builder.Services.AddSingleton(AnotherExampleClass)();
+	}
+}
+```
+
+```CS
+// SolutionName.Communications.CommunicationsExtensions CommunicationExtensions.cs
+public static class CommunicationsExtensions
+{
+	public static IHostApplicationBuilder AddCommunicationsDefaults(this IHostApplicationBuilder builder)
+	{
+		builder.Services.AddSingleton<IExampleA>(new ExampleA());
+		builder.Services.AddSingleton<IExampleB>(new ExampleB());
+	}
+}
+```
+
+``` CS
+// SolutionName.Program AppHost.cs
+internal static class Program
+{
+	[STAThread]
+	public static void Main(params string[] args)
+	{
+		// ...
+		Microsoft.Extensions.Hosting.HostApplicationBuilder? builder;
+		builder = Host.CreateApplicationBuilder(args);
+		builder.AddAppDefaults();
+		builder.AddCommunicationsDefaults();
+		builder.AddDataDefautls();
+		builder.AddMVVMdefaults();
+		builder.AddSharedDefaults();
+		
+		builder.Services.AddSingleton<App>();
+		
+	}
+}
+
+```
+
 ### Composition Root
 ## ViewModel-first Navigation
 ### DataTemplate + Contentcontrol
