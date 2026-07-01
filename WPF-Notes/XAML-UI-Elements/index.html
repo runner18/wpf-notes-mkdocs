@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>XAML UI Elements - alexs-wpf-notes</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">alexs-wpf-notes</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">WPF Notes</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Commands-Events-and-Input-Handling/" class="dropdown-item">Commands, Events, and Input Handling</a>
+</li>
+                                    
+<li>
+    <a href="../Debugging-Testing-and-Deployment/" class="dropdown-item">Debugging, Testing, Deployment, and Interop</a>
+</li>
+                                    
+<li>
+    <a href="../Dependencies-Packages-NuGet/" class="dropdown-item">Dependencies Packages NuGet</a>
+</li>
+                                    
+<li>
+    <a href="../Memory-Management/" class="dropdown-item">Memory Management</a>
+</li>
+                                    
+<li>
+    <a href="../MVVM-Pattern-and-Architecture/" class="dropdown-item">MVVM Pattern and Architecture</a>
+</li>
+                                    
+<li>
+    <a href="../Performance/" class="dropdown-item">Performance</a>
+</li>
+                                    
+<li>
+    <a href="../Reflection/" class="dropdown-item">Reflection</a>
+</li>
+                                    
+<li>
+    <a href="../Resources-Styles-and-Templates/" class="dropdown-item">Resources Styles and Templates</a>
+</li>
+                                    
+<li>
+    <a href="../Routed-Events-and-Window-Nav/" class="dropdown-item">Routed Events and Window Nav</a>
+</li>
+                                    
+<li>
+    <a href="../Threads-Async-and-Dispatcher/" class="dropdown-item">Threads, Async, and Dispatcher</a>
+</li>
+                                    
+<li>
+    <a href="../Validation-and-Exceptions/" class="dropdown-item">Validation and Exceptions</a>
+</li>
+                                    
+<li>
+    <a href="../XAML-Behaviors-and-Properties/" class="dropdown-item">Behaviors and Properties</a>
+</li>
+                                    
+<li>
+    <a href="../XAML-Fundamentals/" class="dropdown-item">XAML Fundamentals</a>
+</li>
+                                    
+<li>
+    <a href="../XAML-Layouts/" class="dropdown-item">XAML Layouts</a>
+</li>
+                                    
+<li>
+    <a href="../XAML-Low-Level/" class="dropdown-item">XAML Low Level</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">XAML UI Elements</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">External Libraries</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../External-Libraries/UnitsNet/" class="dropdown-item">UnitsNet</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../XAML-Low-Level/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../External-Libraries/UnitsNet/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#navigation" class="nav-link">Navigation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#handling-images" class="nav-link">Handling Images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#contentcontrol" class="nav-link">ContentControl</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#itemscontrol" class="nav-link">ItemsControl</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#headeredcontentcontrol" class="nav-link">HeaderedContentControl</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#usercontrol-customcontrol-custompanel" class="nav-link">UserControl, CustomControl, CustomPanel</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#combobox" class="nav-link">ComboBox</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#datagrid" class="nav-link">Datagrid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="navigation">Navigation</h2>
+<p>Elements that related to moving around pages, etc.</p>
+<h3 id="add-tabs-with-tabcontrol">Add Tabs with TabControl</h3>
+<pre><code class="language-xml">&lt;!--
+Source - https://stackoverflow.com/a/189624
+Posted by Brad Leach
+Retrieved 2026-05-18, License - CC BY-SA 2.5
+--&gt;
+
+&lt;TabControl TabStripPlacement=&quot;Right&quot;&gt;
+  &lt;TabControl.Resources&gt;
+    &lt;Style TargetType=&quot;{x:Type TabItem}&quot;&gt;
+      &lt;Setter Property=&quot;Padding&quot; Value=&quot;4&quot; /&gt;
+      &lt;Setter Property=&quot;HeaderTemplate&quot;&gt;
+        &lt;Setter.Value&gt;
+          &lt;DataTemplate&gt;
+            &lt;ContentPresenter Content=&quot;{TemplateBinding Content}&quot;&gt;
+              &lt;ContentPresenter.LayoutTransform&gt;
+                &lt;RotateTransform Angle=&quot;90&quot; /&gt;
+              &lt;/ContentPresenter.LayoutTransform&gt;
+            &lt;/ContentPresenter&gt;
+          &lt;/DataTemplate&gt;
+        &lt;/Setter.Value&gt;
+      &lt;/Setter&gt;
+    &lt;/Style&gt;
+  &lt;/TabControl.Resources&gt;
+  &lt;TabItem Header=&quot;Tab Item 1&quot; /&gt;
+  &lt;TabItem Header=&quot;Tab Item 2&quot; /&gt;
+  &lt;TabItem Header=&quot;Tab Item 3&quot; /&gt;
+  &lt;TabItem Header=&quot;Tab Item 4&quot; /&gt;
+&lt;/TabControl&gt;
+
+</code></pre>
+<h3 id="creating-a-dialog">Creating a Dialog</h3>
+<p>Following the MVVM approach, the ViewModel should have no knowledge of the View, and therefore should not be involved with creating a dialog. </p>
+<p>There are a couple of approaches you can take:</p>
+<p><strong>Create a DialogService</strong><br />
+The ViewModel would use this service to create a new window, meaning the ViewModel does not create the window directly.  The window would change depending on the ViewModel type passed in.</p>
+<p><a href="https://stackoverflow.com/questions/25845689/opening-new-window-in-mvvm-wpf">This is a more simple example</a><br />
+<a href="https://stackoverflow.com/questions/3801681/good-or-bad-practice-for-dialogs-in-wpf-with-mvvm?noredirect=1&amp;lq=1">This is a more complex example</a></p>
+<p><strong>The Purist</strong><br />
+<a href="https://stackoverflow.com/questions/1043918/open-file-dialog-mvvm?noredirect=1&amp;lq=1">The top response to this</a>  argues dialogs are a UI thing, meaning only UI should call it even if from the code-behind.</p>
+<h2 id="handling-images">Handling Images</h2>
+<p>In short, set the Image's source to either BitmapImage or a Uri.</p>
+<p>Ways to set the image types:
+- Image.Source &gt; Uri
+- Image.Source &gt; ImageSource/BitmapSource/BitmapImage &gt; BitmapImage.UriSource  </p>
+<p>Here's a full layout of image related classes, I found the names confusing:</p>
+<ul>
+<li><em>System.Foundation namespace</em></li>
+<li>public sealed class <strong>Uri</strong> (the filepath)</li>
+<li><em>System.Drawing namespace</em></li>
+<li>public abstract class <strong>Image</strong> (do NOT use for images like png)</li>
+<li><em>System.Windows namespace</em></li>
+<li><em>Controls namespace</em><ul>
+<li>public abstract class <strong>Image</strong> (the UI element itself)</li>
+<li>public ImageSource <strong>Image.Source</strong> (can set to ImageSource or Uri directly)</li>
+</ul>
+</li>
+<li><em>Media namespace</em><ul>
+<li>public abstract class <strong>ImageSource</strong></li>
+<li><em>Imaging namespace</em>  </li>
+<li>public abstract class  <strong>BitmapSource</strong> : ImageSource <ul>
+<li>public sealed class <strong>BitmapImage</strong> : BitmapSource</li>
+<li>public Uri <strong>BitmapImage.UriSource</strong> (the image's filepath)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Remember to set image to copy to output directory!</p>
+<p>Some examples: </p>
+<pre><code class="language-CS"></code></pre>
+<ol>
+<li>Take the Uri</li>
+<li>Set BitmapImage.Source to the Uri</li>
+<li>Set the Image.Source to the BitmapImage</li>
+<li>Altenatively, you can set the Image.Source directly to the Uri</li>
+</ol>
+<h2 id="contentcontrol">ContentControl</h2>
+<h2 id="itemscontrol">ItemsControl</h2>
+<h2 id="headeredcontentcontrol">HeaderedContentControl</h2>
+<h2 id="usercontrol-customcontrol-custompanel">UserControl, CustomControl, CustomPanel</h2>
+<h2 id="combobox">ComboBox</h2>
+<p>In the CS:</p>
+<pre><code class="language-CS">public class Person
+{
+  public string Name;
+  public int Age;
+  public string Gender;
+}
+
+// assume this collection is already full of Person objects
+ObservableCollection&lt;Person&gt; PersonCollection { get; } = new ObservableCollection();
+
+public Person PersonYouWantToBindTo = new Person();
+public string GenderYouWantToBindTo = string.Empty;
+
+</code></pre>
+<p>XAML Scenario #1 - the combo box will display <strong>the names in the dropdown UI</strong>, and will <strong>give you a person object</strong></p>
+<pre><code class="language-xml">&lt;ComboBox ItemsSource = {Binding PersonCollection}
+  DisplayMemberPath = &quot;Name&quot;
+  SelectedItem = {Binding PersonYouWantToBindTo}&gt;
+</code></pre>
+<p>XAML Scenario #2 - the combo box will <strong>display the names in the dropdown UI</strong>, and will <strong>give you a gender string</strong></p>
+<pre><code class="language-XML">&lt;ComboBox ItemsSource = {Binding PersonCollection}
+  DisplayMemberPath = &quot;Name&quot;
+  SelectedValuePath = &quot;Gender&quot;
+  SelectedValue = {Binding GenderYouWantToBindTo}/&gt;
+  ```
+
+### Bind ComboBox to Enum
+Add the following classes:
+
+
+```CS
+public static class EnumDataBindingHelper
+{
+    public static string Description(this Enum value)
+    {
+        object?[]? attributes = value.GetType().GetField(value.ToString())?.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        if (attributes is null)
+            return string.Empty;
+        if(attributes.Any())
+        {
+            if(attributes.First() is DescriptionAttribute da)
+            {
+                return da.Description;
+            }
+        } 
+
+        // If no description is found, the least we can do is replace underscores with spaces
+        // You can add your own custom default formatting logic here
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+        return ti.ToTitleCase(ti.ToLower(value.ToString().Replace(&quot;_&quot;, &quot; &quot;)));
+    }
+
+    public static IEnumerable&lt;ValueDescription&gt; GetAllValuesAndDescriptions(Type t)
+    {
+        if (!t.IsEnum)
+            throw new ArgumentException($&quot;{nameof(t)} must be enum type&quot;);
+
+        return Enum.GetValues(t).Cast&lt;Enum&gt;().Select(
+            (e) =&gt; new ValueDescription() { Value = e, Description = e.Description() }).ToList();
+    }
+
+}
+</code></pre>
+<pre><code class="language-CS">class EnumToCollectionConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return EnumDataBindingHelper.GetAllValuesAndDescriptions(value.GetType());
+    }
+    public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return null;
+    }
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+}
+</code></pre>
+<pre><code class="language-CS">public class ValueDescription
+{
+    public object? Value { get; set; }
+    public object? Description { get; set; }
+}
+</code></pre>
+<p>Then in the xaml:</p>
+<pre><code class="language-xml">&lt;UserControl . . .
+             xmlns:edb=&quot;clr-namespace:ExampleSolution.MVVM.Extensions.EnumDataBinding&quot;&gt;
+
+&lt;DataTemplate DataType=&quot;{x:Type sys:Enum}&quot;&gt;
+    &lt;ComboBox ItemsSource=&quot;{Binding Path=., 
+                  Converter={edb:EnumToCollectionConverter}, 
+                  Mode=OneTime}&quot;
+               SelectedValuePath=&quot;Value&quot; 
+               DisplayMemberPath=&quot;Description&quot;
+               SelectedValue=&quot;{Binding Path=., 
+                  Mode=TwoWay, 
+                  UpdateSourceTrigger=PropertyChanged}&quot;/&gt;
+&lt;/DataTemplate&gt;
+</code></pre>
+<h2 id="datagrid">Datagrid</h2>
+<p>DataGrid is used when you need to be able to edit stuff in your tabloe. Also supports automatic column generation.</p>
+<p>To set the content of DataGrid
+- set dataGrid.ItemsSource to "List\<ExampleClass> listOfObjects"
+- Each object in listOfObjects will be a <strong>row</strong> in dataGrid
+- eac property in ExampleClass can be a <strong>column</strong> in dataGrid</p>
+<p>DataGrid auto generates each column based on each public property in ExampleClass. Set dataGrid.AutoGenerateColumns to <strong>false</strong> to add the columns yourself (don't forget to bind the column to a property in the object's class).</p>
+<p>A helpful example:  https://wpf-tutorial.com/datagrid-control/custom-columns/</p>
+<pre><code class="language-XML">&lt;DataGrid Name=&quot;dgUsers&quot; AutoGenerateColumns=&quot;False&quot;&gt;
+  &lt;DataGrid.Columns&gt;
+
+      &lt;DataGridTextColumn Header=&quot;Name&quot; Binding=&quot;{Binding Name}&quot; /&gt;
+
+      &lt;DataGridTemplateColumn Header=&quot;Birthday&quot;&gt;
+          &lt;DataGridTemplateColumn.CellTemplate&gt;
+              &lt;DataTemplate&gt;
+                  &lt;DatePicker SelectedDate=&quot;{Binding Birthday}&quot; BorderThickness=&quot;0&quot; /&gt;
+              &lt;/DataTemplate&gt;
+          &lt;/DataGridTemplateColumn.CellTemplate&gt;
+      &lt;/DataGridTemplateColumn&gt;
+
+  &lt;/DataGrid.Columns&gt;
+&lt;/DataGrid&gt;
+</code></pre>
+<pre><code class="language-CS">using System;
+using System.Collections.Generic;
+using System.Windows;
+
+namespace WpfTutorialSamples.DataGrid_control
+{
+    public partial class DataGridColumnsSample : Window
+    {
+        public DataGridColumnsSample()
+        {
+            InitializeComponent();
+
+            List&lt;User&gt; users = new List&lt;User&gt;();
+            users.Add(new User() { Id = 1, Name = &quot;John Doe&quot;, Birthday = new DateTime(1971, 7, 23) });
+            users.Add(new User() { Id = 2, Name = &quot;Jane Doe&quot;, Birthday = new DateTime(1974, 1, 17) });
+            users.Add(new User() { Id = 3, Name = &quot;Sammy Doe&quot;, Birthday = new DateTime(1991, 9, 2) });
+
+            dgUsers.ItemsSource = users;
+        }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime Birthday { get; set; }
+    }
+}
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
