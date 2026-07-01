@@ -35,7 +35,7 @@ foreach(PropertyInfo[] prop in Foo.GetType().GetProperties())
 Things to note:
 - **GetProperties()** - gets an array of each property's PropertyInfo
 - **PropertyInfo.Name** - gets the property name
-- **PropertyInfo.GetValue()** - gets the value of the property
+- **PropertyInfo.GetValue()** - gets the value of the property, returns *object?*
 - **PropertyInfo.PropertyType.Name** - gets the name of the data type (e.g. string)
 ### EqualityComparer
 EqualityComparer\<T>.Default is a build-in .NET class from *System.Collections.Generic*. It figures out the right way to compare two values of type T without you having to write type-specific comparison logic.

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/WPF-Notes/Reflection.md",
+                "file": "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Reflection"
+              "title": "MVVM-Pattern-and-Architecture"
             }
           }
         ]
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -156,23 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/WPF-Notes/Reflection.md",
+                "file": "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Reflection"
-            }
-          },
-          {
-            "id": "3ec1d2c3d3996334",
-            "type": "leaf",
-            "state": {
-              "type": "quiet-outline",
-              "state": {},
-              "icon": "lines-of-text",
-              "title": "Quiet Outline"
+              "title": "Outline of MVVM-Pattern-and-Architecture"
             }
           },
           {
@@ -186,7 +177,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -206,8 +197,8 @@
   },
   "active": "eeb73db8afd64034",
   "lastOpenFiles": [
-    "docs/WPF-Notes/Resources-Styles-and-Templates.md",
     "docs/WPF-Notes/Reflection.md",
+    "docs/WPF-Notes/Resources-Styles-and-Templates.md",
     "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
     "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
     "docs/WPF-Notes/XAML-Fundamentals.md",

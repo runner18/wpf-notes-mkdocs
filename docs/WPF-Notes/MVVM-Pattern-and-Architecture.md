@@ -231,8 +231,8 @@ public static class SharedExtensions
 {
 	public static IHostApplicationBuilder AddSharedDefaults(this IHostApplicationBuilder builder)
 	{
-		builder.Services.AddSingleton(ExampleClass)();
-		builder.Services.AddSingleton(AnotherExampleClass)();
+		builder.Services.AddSingleton<ExampleClass>();
+		builder.Services.AddSingleton<AnotherExampleClass>();
 	}
 }
 ```
