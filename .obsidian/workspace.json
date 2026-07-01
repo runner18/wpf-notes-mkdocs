@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
+                "file": "docs/WPF-Notes/Reflection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MVVM-Pattern-and-Architecture"
+              "title": "Reflection"
             }
           }
         ]
@@ -74,8 +74,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -157,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
+                "file": "docs/WPF-Notes/Reflection.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MVVM-Pattern-and-Architecture"
+              "title": "Outline of Reflection"
             }
           },
           {
@@ -197,9 +196,9 @@
   },
   "active": "eeb73db8afd64034",
   "lastOpenFiles": [
+    "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
     "docs/WPF-Notes/Reflection.md",
     "docs/WPF-Notes/Resources-Styles-and-Templates.md",
-    "docs/WPF-Notes/MVVM-Pattern-and-Architecture.md",
     "docs/WPF-Notes/XAML-Behaviors-and-Properties.md",
     "docs/WPF-Notes/XAML-Fundamentals.md",
     "docs/WPF-Notes/XAML-Low-Level.md",

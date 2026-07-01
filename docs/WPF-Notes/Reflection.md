@@ -11,6 +11,9 @@ System.Int32
 ```
 
 ### Get List of Properties in Class
+
+Taken from: https://stackoverflow.com/questions/737151/how-to-get-the-list-of-properties-of-a-class
+
 ```CS
 obj.GetType().GetProperties();
 typeof(Foo).GetProperties();
@@ -26,8 +29,9 @@ class Foo
 // ...
 
 Foo foo = new Foo { A = 1, B = "abc" };
-foreach(PropertyInfo[] prop in Foo.GetType().GetProperties())
+foreach(PropertyInfo prop in Foo.GetType().GetProperties())
 {
+	// typeof(FooClass) also works
 	Console.WriteLine("{0} = {1}", prop.Name, prop.GetValue(foo, null));
 }
 ```
